@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/MasterLayout">
+	<decorator name="home" page="web.jsp">
+		<pattern>/home.php</pattern>
+	</decorator>
+	<decorator name="homeAdmin" page="admin.jsp">
+		<pattern>/homeAdmin.php</pattern>
+	</decorator>
+	<decorator name="product" page="web.jsp">
+		<pattern>/product.php</pattern>
+	</decorator>
+
+</decorators>
