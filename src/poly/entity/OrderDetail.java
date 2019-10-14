@@ -12,28 +12,30 @@ import javax.persistence.Table;
 public class OrderDetail {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int OrderDetailID;
-	private int OrderID;
-	private int PorductID;
 	private float Price;
 	private int Discount;
+	@ManyToOne
+	@JoinColumn(name="PorductID")
+	private Product product;
+	@ManyToOne
+	@JoinColumn(name="OrderID")
+	private Order order;
+	public Product getProduct() 
+	{
+		return product;
+	}
+	public void setProduct(Product product) 
+	{
+		this.product=product;
+	}
+	
 	public int getOrderDetailID() {
 		return OrderDetailID;
 	}
 	public void setOrderDetailID(int orderDetailID) {
 		OrderDetailID = orderDetailID;
 	}
-	public int getOrderID() {
-		return OrderID;
-	}
-	public void setOrderID(int orderID) {
-		OrderID = orderID;
-	}
-	public int getPorductID() {
-		return PorductID;
-	}
-	public void setPorductID(int porductID) {
-		PorductID = porductID;
-	}
+	
 	public float getPrice() {
 		return Price;
 	}
@@ -50,20 +52,6 @@ public class OrderDetail {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	@ManyToOne
-	@JoinColumn(name="FK_ORDERDETAIL_PRODUCT")
-	private Product product;
-	public Product getProduct() 
-	{
-		return product;
-	}
-	public void setProduct(Product product) 
-	{
-		this.product=product;
-	}
-	@ManyToOne
-	@JoinColumn(name="FK_ORDERDETAIL_ORDER")
-	private Order order;
 	public Order getOrder() 
 	{
 		return order;

@@ -7,19 +7,26 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-
 @Entity
 @Table(name="Icdetail")
 public class Icdetail {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int iCDetailID;
-	private int importCouponID;
-	private int productID;
 	private int quantity;
 	private Float price;
-	
+	@ManyToOne
+	@JoinColumn(name="ImportCouponID")
+	private ImportCoupon importCoupon;
+	@ManyToOne
+	@JoinColumn(name="ProductID")
+	private Product product;
+	public ImportCoupon getImportCoupon() {
+		return importCoupon;
+	}
+	public void setImportCoupon(ImportCoupon importCoupon) {
+		this.importCoupon = importCoupon;
+	}
 	public Icdetail() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -30,18 +37,7 @@ public class Icdetail {
 	public void setiCDetailID(int iCDetailID) {
 		this.iCDetailID = iCDetailID;
 	}
-	public int getImportCouponID() {
-		return importCouponID;
-	}
-	public void setImportCouponID(int importCouponID) {
-		this.importCouponID = importCouponID;
-	}
-	public int getProductID() {
-		return productID;
-	}
-	public void setProductID(int productID) {
-		this.productID = productID;
-	}
+	
 	public int getQuantity() {
 		return quantity;
 	}
@@ -54,10 +50,6 @@ public class Icdetail {
 	public void setPrice(Float price) {
 		this.price = price;
 	}
-	
-	@ManyToOne
-	@JoinColumn(name="FK_ICDETAIL_IMPORTCOUPON")
-	private ImportCoupon importCoupon;
 	public ImportCoupon getImportcoupon() {
 		return importCoupon;
 	}
@@ -65,10 +57,6 @@ public class Icdetail {
 	{
 		this.importCoupon=importCoupon;
 	}
-	
-	@ManyToOne
-	@JoinColumn(name="FK_ICDETAIL_PRODUCT1")
-	private Product product;
 	public Product getProduct() {
 		return product;
 	}

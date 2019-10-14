@@ -1,4 +1,5 @@
 package poly.entity;
+
 import java.util.Collection;
 import java.util.Date;
 
@@ -13,95 +14,74 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="ORDER")
+@Table(name = "ORDER")
 public class Order {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int orderID;
-	private int customerID;
-	private int staffID;
 	private Date orderDate;
-	private int shipperID;
 	private String description;
 	
+	@OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
+	private Collection<OrderDetail> orderDetail;
+	public Collection<OrderDetail> getOrderDetail() {
+		return orderDetail;
+	}
+
+	public void setOrderDetail(Collection<OrderDetail> orderDetail) {
+		this.orderDetail = orderDetail;
+	}
+
+	public Staff getStaff() {
+		return staff;
+	}
+
+	public void setStaff(Staff staff) {
+		this.staff = staff;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "staffID")
+	private Staff staff;
+	
+	@ManyToOne
+	@JoinColumn(name = "CustomerID")
+	private Customer customer;
+	
+	@ManyToOne
+	@JoinColumn(name = "shipperID")
+	private Shipper shipper;
+
 	public Order() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public int getOrderID() {
 		return orderID;
 	}
-
 
 	public void setOrderID(int orderID) {
 		this.orderID = orderID;
 	}
 
-
-	public int getCustomerID() {
-		return customerID;
-	}
-
-
-	public void setCustomerID(int customerID) {
-		this.customerID = customerID;
-	}
-
-
-	public int getStaffID() {
-		return staffID;
-	}
-
-
-	public void setStaffID(int staffID) {
-		this.staffID = staffID;
-	}
-
+	
 
 	public Date getOrderDate() {
 		return orderDate;
 	}
 
-
 	public void setOrderDate(Date orderDate) {
 		this.orderDate = orderDate;
 	}
-
-
-	public int getShipperID() {
-		return shipperID;
-	}
-
-
-	public void setShipperID(int shipperID) {
-		this.shipperID = shipperID;
-	}
-
 
 	public String getDescription() {
 		return description;
 	}
 
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-	@OneToMany(mappedBy="Order", fetch = FetchType.LAZY)
-	private Collection<OrderDetail> orderDetail;
-	public Collection<OrderDetail> getOrderdetail()
-	{
-	return orderDetail;	
-	}
-	public void setOrderdetail(Collection<OrderDetail> orderDetail) 
-	{
-		this.orderDetail=orderDetail;
-	}
-	
-	@ManyToOne
-	@JoinColumn(name="FK_CUSTOMER")
-	private Customer customer;
 
 	public Customer getCustomer() {
 		return customer;
@@ -110,10 +90,6 @@ public class Order {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
-	
-	@ManyToOne
-	@JoinColumn(name="FK_SHIPPER")
-	private Shipper shipper;
 
 	public Shipper getShipper() {
 		return shipper;
@@ -122,6 +98,12 @@ public class Order {
 	public void setShipper(Shipper shipper) {
 		this.shipper = shipper;
 	}
-	
-}
 
+	public Collection<OrderDetail> getOrderdetail() {
+		return orderDetail;
+	}
+
+	public void setOrderdetail(Collection<OrderDetail> orderDetail) {
+		this.orderDetail = orderDetail;
+	}
+}
