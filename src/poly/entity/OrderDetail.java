@@ -15,7 +15,7 @@ public class OrderDetail {
 	private float Price;
 	private int Discount;
 	@ManyToOne
-	@JoinColumn(name="PorductID")
+	@JoinColumn(name="ProductID")
 	private Product product;
 	@ManyToOne
 	@JoinColumn(name="OrderID")
