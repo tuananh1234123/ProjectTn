@@ -2,9 +2,11 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/inclue/taglib.jsp"%>
 
+
 <!DOCTYPE html>
 <html>
 <head>
+
 <!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport"
@@ -15,16 +17,19 @@
 	href="
 	<c:url value='/template/admin/vendors/iconfonts/mdi/css/materialdesignicons.min.css'/>
 	">
-<link rel="stylesheet" href="
+<link rel="stylesheet"
+	href="
 	<c:url value='/template/admin/vendors/css/vendor.bundle.base.css'/>
 ">
 <!-- endinject -->
-<!-- inject:css -->
-<link rel="stylesheet" href="
+<!-- inject:css --><base href="${pageContext.servletContext.contextPath}/">
+<link rel="stylesheet"
+	href="
 <c:url value='/template/admin/css/style.css'/>
 ">
 <!-- endinject -->
-<link rel="shortcut icon" href="
+<link rel="shortcut icon"
+	href="
 <c:url value='/template/admin/images/favicon.png'/>
 ">
 <style type="text/css">/* Chart.js */
@@ -93,28 +98,55 @@ to {
 		</div>
 		<!-- page-body-wrapper ends -->
 	</div>
-	  <!-- plugins:js -->
-  <script src="
+	<!-- plugins:js -->
+	<script
+		src="
   <c:url value='/template/admin/vendors/js/vendor.bundle.base.js'/>
  "></script>
-  <script src="
+	<script
+		src="
     <c:url value='/template/admin/vendors/js/vendor.bundle.addons.js'/>
 "></script>
-  <!-- endinject -->
-  <!-- Plugin js for this page-->
-  <!-- End plugin js for this page-->
-  <!-- inject:js -->
-  <script src="
+	<!-- endinject -->
+	<!-- Plugin js for this page-->
+	<!-- End plugin js for this page-->
+	<!-- inject:js -->
+	<script src="
     <c:url value='/template/admin/js/off-canvas.js'/>
 "></script>
-  <script src="
+	<script src="
    <c:url value='/template/admin/js/misc.js'/>
 "></script>
-  <!-- endinject -->
-  <!-- Custom js for this page-->
-  <script src="
+	<!-- endinject -->
+	<!-- Custom js for this page-->
+	<script
+		src="
      <c:url value='/template/admin/js/dashboard.js'/>
   "></script>
-  <!-- End custom js for this page-->
+	<!-- End custom js for this page-->
+	<link
+		href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		rel="stylesheet" id="bootstrap-css">
+	<script
+		src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script
+		src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!------ Include the above in your HEAD tag ---------->
+
+	<script
+		src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+	<script
+		src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+
+	<script>
+		$(document).ready(function() {
+			$('#table').DataTable({
+
+				"aLengthMenu" : [ [ 5, 10, 25, -1 ], [ 5, 10, 25, "All" ] ],
+				"iDisplayLength" : 5
+			}
+
+			);
+		});
 </body>
 </html>

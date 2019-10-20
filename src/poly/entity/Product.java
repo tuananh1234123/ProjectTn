@@ -5,7 +5,6 @@ import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -16,8 +15,8 @@ import javax.persistence.Table;
 @Table(name = "PRODUCT")
 public class Product {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int productID;
+	@GeneratedValue
+	private int ProductID;
 	private String productName;
 	private String photo;
 	private float price;
@@ -76,11 +75,12 @@ public class Product {
 	public Product() {
 		super();
 	}
+
 	public int getProductID() {
-		return productID;
+		return ProductID;
 	}
 	public void setProductID(int productID) {
-		this.productID = productID;
+		ProductID = productID;
 	}
 	public String getProductName() {
 		return productName;
