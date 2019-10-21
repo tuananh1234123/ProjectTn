@@ -34,8 +34,8 @@
 							<div class="top_bar_user">
 								<div class="user_icon"><img src="<c:url value='/template/web/images/user.svg'/>
 							" alt=""></div>
-								<div><a href="register.php">Register</a></div>
-								<div><a href="login.php">Sign in</a></div>
+								<div><a href="#">Register</a></div>
+								<div><a href="#">Sign in</a></div>
 							</div>
 						</div>
 					</div>
