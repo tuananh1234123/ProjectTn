@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
 <<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> Stashed changes
+<<<<<<< Updated upstream
 Built-By: khang
 Build-Jdk: 1.8.0_231
 =======
@@ -10,6 +15,17 @@ Build-Jdk: 1.8.0_171
 Built-By: DELL-PC
 Build-Jdk: 1.8.0_161
 >>>>>>> Stashed changes
+>>>>>>> Stashed changes
+<<<<<<< Updated upstream
+=======
+=======
+Built-By: Admin
+Build-Jdk: 1.8.0_171
+>>>>>>> parent of 07bb87f... Merge branch 'KhangML'
+=======
+Built-By: Admin
+Build-Jdk: 1.8.0_171
+>>>>>>> parent of 580417d... Update  Home view in
 >>>>>>> Stashed changes
 Created-By: Maven Integration for Eclipse
 
