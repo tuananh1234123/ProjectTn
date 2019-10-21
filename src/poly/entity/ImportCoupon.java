@@ -19,25 +19,24 @@ public class ImportCoupon {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int importCouponID;
-	private int staffID;
 	private Date importDate;
 	private String Description;
-	
+	@OneToMany(mappedBy="importCoupon", fetch = FetchType.EAGER)
+	private Collection<Icdetail> iCDetail;
+	@ManyToOne
+	@JoinColumn(name="StaffID")
+	private Staff staff;
+
 	public ImportCoupon() {
 		super();
 	}
-	public int getImportCouponID() {
+	public int getImportCouponID(){
 		return importCouponID;
 	}
 	public void setImportCouponID(int importCouponID) {
 		this.importCouponID = importCouponID;
 	}
-	public int getStaffID() {
-		return staffID;
-	}
-	public void setStaffID(int staffID) {
-		this.staffID = staffID;
-	}
+	
 	public Date getImportDate() {
 		return importDate;
 	}
@@ -51,13 +50,6 @@ public class ImportCoupon {
 		Description = description;
 	}
 	
-	@OneToMany(mappedBy="ImportCoupon", fetch = FetchType.LAZY)
-	private Collection<Icdetail> iCDetail;
-	
-	@ManyToOne
-	@JoinColumn(name="FK_STAFF")
-	private Staff staff;
-
 	public Collection<Icdetail> getiCDetail() {
 		return iCDetail;
 	}

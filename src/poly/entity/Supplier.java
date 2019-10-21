@@ -20,7 +20,8 @@ public class Supplier {
 	private String address;
 	private String email;
 	private String phone;
-	
+	@OneToMany(mappedBy="supplier", fetch = FetchType.LAZY)
+	private Collection<Product> product;
 	public Supplier() {
 		super();
 	}
@@ -54,9 +55,6 @@ public class Supplier {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	
-	@OneToMany(mappedBy="Supplier", fetch = FetchType.LAZY)
-	private Collection<Product> product;
 
 	public Collection<Product> getProduct() {
 		return product;

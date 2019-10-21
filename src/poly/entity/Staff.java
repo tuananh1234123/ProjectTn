@@ -26,6 +26,10 @@ public class Staff {
 	private int role;
 	private String description;
 	private int status;
+	@OneToMany(mappedBy="staff", fetch = FetchType.LAZY)
+	private Collection<Order> order;
+	@OneToMany(mappedBy="staff", fetch = FetchType.LAZY)
+	private Collection<ImportCoupon> importCoupon;
 	public int getStaffID() {
 		return staffID;
 	}
@@ -102,8 +106,7 @@ public class Staff {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	@OneToMany(mappedBy="staff", fetch = FetchType.LAZY)
-	private Collection<Order> order;
+	
 	public Collection<Order> getOrder()
 	{
 		return order;
@@ -112,8 +115,7 @@ public class Staff {
 	{
 		this.order=order;
 	}
-	@OneToMany(mappedBy="staff", fetch = FetchType.LAZY)
-	private Collection<ImportCoupon> importCoupon;
+	
 	public Collection<ImportCoupon> getImportCoupon() {
 		return importCoupon;
 	}

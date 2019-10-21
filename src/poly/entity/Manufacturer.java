@@ -16,6 +16,12 @@ public class Manufacturer {
 	private int manufacturerID;
 	private String manufacturerName;
 	private String description;
+	@OneToMany(mappedBy="manufacturer", fetch = FetchType.LAZY)
+	private Collection<Product> product;
+	
+	public void setProduct(Collection<Product> product) {
+		this.product = product;
+	}
 	public int getManufacturerID() {
 		return manufacturerID;
 	}
@@ -38,8 +44,7 @@ public class Manufacturer {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	@OneToMany(mappedBy="manufacturer", fetch = FetchType.LAZY)
-	private Collection<Product> product;
+
 	public Collection<Product> getProduct()
 	{
 		return product;

@@ -17,7 +17,7 @@ import javax.persistence.Table;
 public class Customer {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int customerID;
+	private int CustomerID;
 	private String customerName;
 	private String cUserID;
 	private String password;
@@ -27,7 +27,7 @@ public class Customer {
 	private String email;
 	private String description;
 	private int status;
-	@OneToMany(mappedBy="Customer", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy="customer", fetch = FetchType.LAZY)
 	private Collection<Order> order;
 	
 	public Customer() {
@@ -35,10 +35,10 @@ public class Customer {
 		// TODO Auto-generated constructor stub
 	}
 	public int getCustomerID() {
-		return customerID;
+		return CustomerID;
 	}
 	public void setCustomerID(int customerID) {
-		this.customerID = customerID;
+		this.CustomerID = customerID;
 	}
 	public String getCustomerName() {
 		return customerName;

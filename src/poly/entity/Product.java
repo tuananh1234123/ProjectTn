@@ -1,23 +1,23 @@
 package poly.entity;
 
+import java.util.Collection;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "PRODUCT")
 public class Product {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int productID;
+	@GeneratedValue
+	private int ProductID;
 	private String productName;
-	private int supplierID;
-	private int manufacturerID;
-	private int categoryID;
 	private String photo;
 	private float price;
 	private int quantity;
@@ -25,16 +25,39 @@ public class Product {
 	private int status;
 	
 	@ManyToOne
-	@JoinColumn(name="FK_SUPPLIER")
+	@JoinColumn(name="supplierID")
 	private Supplier supplier;
 	
-//	@ManyToOne
-//	@JoinColumn(name="FK_MANUFACTURER")
-//	private Manufacturer manufacturer;
+	@ManyToOne
+	@JoinColumn(name="manufacturerID")
+	private Manufacturer manufacturer;
 	
 	@ManyToOne
-	@JoinColumn(name="FK_CATEGORY")
+	@JoinColumn(name="categoryID")
 	private Category category;
+	@OneToMany(mappedBy="product", fetch = FetchType.LAZY)
+	private Collection<Icdetail> icdetail;
+	@OneToMany(mappedBy="product", fetch = FetchType.LAZY)
+	private Collection<OrderDetail> orderDetail;
+	public Manufacturer getManufacturer() {
+		return manufacturer;
+	}
+	public void setManufacturer(Manufacturer manufacturer) {
+		this.manufacturer = manufacturer;
+	}
+	public Collection<Icdetail> getIcdetail() {
+		return icdetail;
+	}
+	public void setIcdetail(Collection<Icdetail> icdetail) {
+		this.icdetail = icdetail;
+	}
+	public Collection<OrderDetail> getOrderDetail() {
+		return orderDetail;
+	}
+	public void setOrderDetail(Collection<OrderDetail> orderDetail) {
+		this.orderDetail = orderDetail;
+	}
+	
 	
 	public Supplier getSupplier() {
 		return supplier;
@@ -42,12 +65,7 @@ public class Product {
 	public void setSupplier(Supplier supplier) {
 		this.supplier = supplier;
 	}
-//	public Manufacturer getManufacturer() {
-//		return manufacturer;
-//	}
-//	public void setManufacturer(Manufacturer manufacturer) {
-//		this.manufacturer = manufacturer;
-//	}
+
 	public Category getCategory() {
 		return category;
 	}
@@ -57,11 +75,12 @@ public class Product {
 	public Product() {
 		super();
 	}
+
 	public int getProductID() {
-		return productID;
+		return ProductID;
 	}
 	public void setProductID(int productID) {
-		this.productID = productID;
+		ProductID = productID;
 	}
 	public String getProductName() {
 		return productName;
@@ -69,24 +88,7 @@ public class Product {
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
-	public int getSupplierID() {
-		return supplierID;
-	}
-	public void setSupplierID(int pupplierID) {
-		this.supplierID = pupplierID;
-	}
-	public int getManufacturerID() {
-		return manufacturerID;
-	}
-	public void setManufacturerID(int manufacturerID) {
-		this.manufacturerID = manufacturerID;
-	}
-	public int getCategoryID() {
-		return categoryID;
-	}
-	public void setCategoryID(int categoryID) {
-		this.categoryID = categoryID;
-	}
+
 	public String getPhoto() {
 		return photo;
 	}

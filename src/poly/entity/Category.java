@@ -11,25 +11,29 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Category")
+@Table(name = "CATEGORY")
 public class Category {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int categoryID;
+	private int CategoryID;
 	private String categoryName;
-	private String description;
-	
-	@OneToMany(mappedBy="Category", fetch = FetchType.LAZY)
+	public int getCategoryID() {
+		return CategoryID;
+	}
+	public void setCategoryID(int categoryID) {
+		CategoryID = categoryID;
+	}
+	private String description;	
+	@OneToMany(mappedBy="category", fetch = FetchType.EAGER)
 	private Collection<Product> product;
-	
 	public Category() {
 		super();
-		// TODO Auto-generated constructor stub
+	
 	}
 	public int getCategoryid() {
-		return categoryID;
+		return CategoryID;
 	}
 	public void setCategoryid(int categoryID) {
-		this.categoryID = categoryID;
+		this.CategoryID = categoryID;
 	}
 	public String getCategoryName() {
 		return categoryName;
