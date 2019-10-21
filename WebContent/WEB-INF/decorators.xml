@@ -4,6 +4,8 @@
 	<decorator name="customer" page="web.jsp">
 		<pattern>/home.php</pattern>
 		<pattern>/product.php</pattern>
+		<pattern>/register.php</pattern>
+		<pattern>/login.php</pattern>
 	</decorator>
 	
 		<!-- admin -->
