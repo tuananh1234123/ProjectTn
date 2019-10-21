@@ -23,8 +23,6 @@ public class HomeController {
 		String hql = "SELECT COUNT(t1.product.ProductID) AS SLBan, t1.product.ProductID, t2.productName, t2.price, t2.photo"
 				+ " FROM OrderDetail  t1"
 				+ " INNER JOIN Product  t2 ON (t1.product.ProductID = t2.ProductID)"
-				+ " GROUP BY t1.product.ProductID, t2.productName, t2.price, t2.photo"
-				+ " ORDER BY SLBan DESC";
 		Query query = session.createQuery(hql);
 		List result = query.list();
 		model.addAttribute("sp", result);
